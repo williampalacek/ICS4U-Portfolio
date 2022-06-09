@@ -87,8 +87,8 @@ body {
   bottom: 0px;
   min-width:900px;
   
-  background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
-	background-size: 300%;
+  background: linear-gradient(-45deg, #0B0742, #120C6E, #5E72EB, #FF9190, #FDC094);
+	background-size: 200%;
   
   -webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
