@@ -3,8 +3,13 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
-
+/*Hide Scroll Bard*/
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
 header {
   display: flex;
   justify-content: flex-end;
@@ -16,7 +21,7 @@ header {
   z-index: 10;
   box-shadow: 0px 0px 20px 0px rgba(0.3, 0.3, 0.3, 0.3);
   border-radius: 10px;
-  
+
   background-color: rgba(255, 255, 255, 0.85);
 }
 
@@ -24,7 +29,7 @@ header {
   margin-right: auto;
   height: 60px;
   width: 48px;
- 
+
   filter: none;
 }
 
@@ -32,7 +37,6 @@ header {
   list-style: none;
   display: flex;
   filter: none;
- 
 }
 
 .nav__links a,
@@ -42,13 +46,11 @@ header {
   color: #24252a;
   text-decoration: none;
   filter: none;
-
 }
 
 .nav__links li {
   padding: 0px 20px;
   filter: none;
-  
 }
 
 .nav__links li a:hover {
@@ -64,20 +66,19 @@ body {
   height: 99.3vh;
   width: 100vw;
   position: relative;
-  top:4px;
-  z-index:1;
+  top: 4px;
+  z-index: 1;
   filter: none;
 }
 
 .about {
-  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
   position: relative;
   background-color: #609dba;
 }
 
-.jumboName{
+.jumboName {
   z-index: 9;
   top: 50%;
   font-size: 600%;
@@ -85,38 +86,50 @@ body {
   left: 50%;
   transform: translate(-38%, -45%);
   bottom: 0px;
-  min-width:900px;
-  
-  background: linear-gradient(-45deg, #0B0742, #120C6E, #5E72EB, #FF9190, #FDC094);
-	background-size: 200%;
-  
+  min-width: 900px;
+
+  background: linear-gradient(
+    -45deg,
+    #0b0742,
+    #120c6e,
+    #5e72eb,
+    #ff9190,
+    #fdc094
+  );
+  background-size: 200%;
+
   -webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	animation: animated_text 10s ease-in-out infinite;
-	-moz-animation: animated_text 10s ease-in-out infinite;
-	-webkit-animation: animated_text 10s ease-in-out infinite;
+  -webkit-text-fill-color: transparent;
+  animation: animated_text 10s ease-in-out infinite;
+  -moz-animation: animated_text 10s ease-in-out infinite;
+  -webkit-animation: animated_text 10s ease-in-out infinite;
 }
 
 @keyframes animated_text {
-	0% { background-position: 0px 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0px 50%; }
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
 }
-
-
-
 
 .aboutText {
-overflow-x: hidden;
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-   background-color: #f2f3f7;
-  top:0px;
+  background-color: #f2f3f7;
+  top: 0px;
 }
 .aboutPara {
-  
   text-align: centre;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 50%;
-  right:-1000px;
+  display: block;
+  position: relative;
+  top:50%;
 }
