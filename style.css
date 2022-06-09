@@ -14,6 +14,7 @@ header {
   min-width: 634px;
   position: fixed;
   z-index: 10;
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .logo {
@@ -49,16 +50,16 @@ body {
 }
 
 .coverPhoto {
-  height: 120vh;
+  height: 100vh;
   width: 100vw;
   position: relative;
-  top: -190px;
+  top:0px;
   z-index:1;
   
 }
 
 .about {
-  overflow: visible;
+  overflow-x: hidden;
   width: 100vw;
   height: 100vh;
   position: relative;
@@ -70,12 +71,15 @@ body {
   font-size: 700%;
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-45%, -45%);
   bottom: 0px;
+  min-width:900px;
 }
 
 .aboutText {
-  overflow: visible;
+overflow-x: hidden;
   width: 100vw;
   height: 100vh;
+  background-color: red;
+  top:0px;
 }
