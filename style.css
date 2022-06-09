@@ -59,7 +59,7 @@ header {
 
 /*------------------------------------------------*/
 body {
-  background-color:transparent;
+  background-color:black;
 }
 
 .coverPhoto {
@@ -75,7 +75,6 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: #609dba;
 }
 
 .jumboName {
@@ -117,10 +116,6 @@ body {
   }
 }
 
-:root{
-	--x: 0;
-	--y: 0;
-}
 .aboutText {
   overflow-x: hidden;
   width: 100vw;
@@ -142,7 +137,6 @@ body {
   
 }
 canvas {
-  height:100vh;
-  width:100vw;
-  z-index: 11;
+  width: 100%;
+  height: 100%;
 }
