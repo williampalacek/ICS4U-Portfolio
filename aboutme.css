@@ -71,3 +71,17 @@ body {
   left: 51%;
   transform: translate(-50%, -50%);
 }
+
+#scene{
+  background:var(--scene-background);
+  height:100vh;
+  width:100vw
+}
+:root{
+  --particle-color-1: hsl(200, 100%, 15%);
+  --particle-color-2: hsl(200, 100%, 30%);
+  --particle-color-3: hsl(200, 100%, 45%);
+  --particle-color-4: hsl(200, 100%, 60%);
+  --particle-color-5: hsl(200, 100%, 75%);
+  --scene-background: black
+}
