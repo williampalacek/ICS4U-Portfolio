@@ -9,12 +9,16 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 20px 10%;
+  padding: 10px 5%;
   width: 100%;
   min-width: 634px;
   position: fixed;
   z-index: 10;
-  box-shadow: 0 3px 7px 0 rgba(0.3, 0.3, 0.3, 0.3);
+  box-shadow: 0px 0px 20px 0px rgba(0.3, 0.3, 0.3, 0.3);
+  border-radius: 50px;
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-color: wrgba(255, 255, 255, 0.5);
 }
 
 .logo {
@@ -68,10 +72,10 @@ body {
 .jumboName{
   z-index: 10;
   top: 50%;
-  font-size: 700%;
+  font-size: 600%;
   position: absolute;
   left: 50%;
-  transform: translate(-45%, -45%);
+  transform: translate(-38%, -45%);
   bottom: 0px;
   min-width:900px;
 }
