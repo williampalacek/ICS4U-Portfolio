@@ -59,12 +59,15 @@ header {
 
 /*------------------------------------------------*/
 body {
-  background : #1c1d25;
+  background: #1c1d25;
 }
 
-.paragraph{
+.paragraph {
   color: white;
   font-family: "Jockey One";
   width: 45%;
   position: absolute;
+  top: 65%;
+  left: 51%;
+  transform: translate(-50%, -50%);
 }

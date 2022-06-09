@@ -11,7 +11,7 @@ window.onload = function () {
   var ease = 0.2;
   var density = 1;
   var offset = 5;
-  var timeout = 30;
+  var timeout = 25;
   var pixels;
   var particles = [];
 
