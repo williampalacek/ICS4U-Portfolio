@@ -1,12 +1,9 @@
-const doc = document;
-const menuOpen = doc.querySelector(".menu");
-const menuClose = doc.querySelector(".close");
-const overlay = doc.querySelector(".overlay");
+document.querySelector('article').onmousemove = (e) => {
+	requestAnimationFrame(() =>{
+		const x = e.pageX - e.target.offsetLeft;
+		const y = e.pageY - e.target.offsetTop;
 
-menuOpen.addEventListener("click", () => {
-  overlay.classList.add("overlay--active");
-});
-
-menuClose.addEventListener("click", () => {
-  overlay.classList.remove("overlay--active");
-});
+		e.target.style.setProperty('--x', `${ x }px`);
+		e.target.style.setProperty('--y', `${ y }px`);		
+	});
+}
