@@ -86,6 +86,31 @@ body {
   transform: translate(-38%, -45%);
   bottom: 0px;
   min-width:900px;
+  
+  
+  background: linear-gradient(to right, #621e63 20%, #FF0000 40%, #FF0000 60%, #621e63 80%);
+  background-size: 200% 200%;
+  
+    
+  color: #000000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  animation: shine 15s linear infinite;
+ 
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 .aboutText {
