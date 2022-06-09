@@ -1,3 +1,4 @@
+/*------------------------NAV------------------------*/
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,7 +28,6 @@ header {
 }
 
 .nav__links a,
-d .cta,
 .overlay__content a {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
@@ -43,7 +43,7 @@ d .cta,
   color: #0088a9;
 }
 
-/*-------------------------------------------------------*/
+/*------------------------------------------------*/
 body {
   background-color: #f2f3f7;
 }
@@ -59,11 +59,13 @@ body {
 
 .about {
   overflow: hidden;
+  
+  position: relative;
 }
 
 .jumboName{
-  z-index:10;
-  font-size:100px;
-  display: block;
-  align-items: center;
+  z-index: 10;
+  top: auto;
+  font-size: 700%;
+  position: absolute;
 }
