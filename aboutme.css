@@ -61,3 +61,8 @@ header {
 body {
   background : #1c1d25;
 }
+
+.paragraph{
+  color: white;
+  font-family: "Jockey One";
+}
