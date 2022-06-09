@@ -69,6 +69,7 @@ body {
   top: 4px;
   z-index: 1;
   filter: none;
+  object-fit: cover;
 }
 
 .about {
@@ -126,10 +127,9 @@ body {
   width: 100vw;
   height: 100vh;
   top: 0px;
-  display: grid;
 	flex-direction: column;
 	place-content: center;
-	background-color: hsl(0, 0, 15);
+	background-color: white;
 }
 .aboutPara {
   text-align: centre;
@@ -141,11 +141,26 @@ body {
   top:43%;
   
 }
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  z-index: 10;
+
+iframe {
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-container iframe {
+    /* height = 100 * (9 / 16) = 56.25 */
+    height: 56.25vw;
+  }
+}
+    
+@media (max-aspect-ratio: 16/9) {
+  .video-container iframe {
+    /* width = 100 / (9 / 16) = 177.777777 */
+    width: 177.78vh;
+  }
 }
