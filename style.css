@@ -110,6 +110,13 @@ body {
 overflow-x: hidden;
   width: 100vw;
   height: 100vh;
-  background-color: red;
+   background-color: #f2f3f7;
   top:0px;
+}
+.aboutPara {
+  
+  text-align: centre;
+  margin: auto;
+  width: 50%;
+  right:-1000px;
 }
