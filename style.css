@@ -87,31 +87,24 @@ body {
   bottom: 0px;
   min-width:900px;
   
+  background: linear-gradient(-45deg, #6355a4, #6355a4, #e89a3e, #e89a3e);
+	background-size: 300%;
   
-  background: linear-gradient(to right, #621e63 20%, #FF0000 40%, #FF0000 60%, #621e63 80%);
-  background-size: 200% 200%;
-  
-    
-  color: #000000;
-  background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  animation: shine 15s linear infinite;
- 
+	-webkit-text-fill-color: transparent;
+	animation: animated_text 10s ease-in-out infinite;
+	-moz-animation: animated_text 10s ease-in-out infinite;
+	-webkit-animation: animated_text 10s ease-in-out infinite;
 }
 
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+@keyframes animated_text {
+	0% { background-position: 0px 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0px 50%; }
 }
+
+
+
 
 .aboutText {
 overflow-x: hidden;
