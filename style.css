@@ -59,7 +59,10 @@ header {
 
 /*------------------------------------------------*/
 body {
-  background-color: #f2f3f7;
+ 	display: grid;
+	flex-direction: column;
+	place-content: center;
+	background-color: hsl(0, 0, 15);
 }
 
 .coverPhoto {
@@ -122,14 +125,22 @@ body {
 	--y: 0;
 }
 .aboutText {
-  overflow-x: hidden;
-  width: 100vw;
-  height: 100vh;
-  top: 0px;
-  display: grid;
+ box-sizing: border-box;
+	display: flex;
 	flex-direction: column;
 	place-content: center;
-	background-color: hsl(0, 0, 15);
+	color: white;
+	padding: 3em;
+	max-height: 20em;
+	max-width: 40em;
+	border-radius: 1em;
+	background: radial-gradient(circle at var(--x) var(--y) , #AA076B, #61045F);
+	box-shadow:  0 0 0 #61045F inset,0 4px 8px rgba(50,0,0,0.2), 0 2px 4px rgba(128,0,0,0.3);
+
+	> *{
+		z-index: 1;
+		pointer-events: none;
+	}
 }
 .aboutPara {
   text-align: centre;
