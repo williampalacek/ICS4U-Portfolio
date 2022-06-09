@@ -9,9 +9,9 @@ window.onload = function () {
   var radius = 9400;
   var drag = 0.92;
   var ease = 0.2;
-  var density = 1;
+  var density = 2;
   var offset = 5;
-  var timeout = 25;
+  var timeout = 20;
   var pixels;
   var particles = [];
 
