@@ -1,139 +1,108 @@
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+window.onload = function () {
+  var canvas = document.getElementById("textparticle"),
+    ctx = canvas.getContext("2d");
 
-function getCssVar(v) {
-  return getComputedStyle(document.documentElement).getPropertyValue(v);
-}
+  var cw = (canvas.width = window.innerWidth);
+  var ch = (canvas.height = window.innerHeight);
+  var size = canvas.width;
+  var keyword = "About Me";
+  var radius = 9400;
+  var drag = 0.92;
+  var ease = 0.2;
+  var density = 1;
+  var offset = 5;
+  var timeout = 25;
+  var pixels;
+  var particles = [];
 
-let text404 = '404';
-let canvas = document.getElementById('scene');
-let ch = canvas.height = canvas.getBoundingClientRect().height;
-let cw = canvas.width = canvas.getBoundingClientRect().width;
-let sceneBackground = getCssVar('--scene-background');
-let context = canvas.getContext('2d');
-let previousMouseCoord = {x:0, y:0};
-let mouseCoord = {x:0, y:0};
-let sceneResize = false;
-let particlesCount = 0;
-let particles = [];
-let colors = [
-  getCssVar('--particle-color-1'),
-  getCssVar('--particle-color-2'),
-  getCssVar('--particle-color-3'),
-  getCssVar('--particle-color-4'),
-  getCssVar('--particle-color-5')
-];
-const dpi = 200;
+  var mx = 0,
+    my = 0;
 
-let Particle = function(x, y) {
-  this.x =  getRandomInt(cw);
-  this.y =  getRandomInt(ch);
-  this.coord = {x:x, y:y};
-  this.r =  Math.min((getRandomInt((cw / dpi)) + 1), 6);
-  this.vx = (Math.random() - 0.5) * 100;
-  this.vy = (Math.random() - 0.5) * 100;
-  this.accX = 0;
-  this.accY = 0;
-  this.friction = Math.random() * 0.05 + 0.90;
-  this.color = colors[Math.floor(Math.random() * 6)];
-}
+  ctx.font = "200px 'Jockey One'";
 
-Particle.prototype.render = function(isDisableMouse) {
-  this.accX = (this.coord.x - this.x) / 100;
-  this.accY = (this.coord.y - this.y) / 100;
-  this.vx += this.accX;
-  this.vy += this.accY;
-  this.vx *= this.friction;
-  this.vy *= this.friction;
-  this.x += this.vx;
-  this.y +=  this.vy;
-  if (!isDisableMouse) {
-    let a = this.x - mouseCoord.x;
-    let b = this.y - mouseCoord.y;
-    var distance = Math.sqrt(a * a + b * b);
-    if(distance < (cw / 15)) {
-      this.accX = (this.x - mouseCoord.x) / 100;
-      this.accY = (this.y - mouseCoord.y) / 100;
-      this.vx += this.accX;
-      this.vy += this.accY;
+  ctx.fillText(
+    keyword,
+    cw / 2 - Math.round(ctx.measureText(keyword).width / 2),
+    ~~(ch / 2)
+  );
+
+  canvas.addEventListener("mousemove", function (e) {
+    mx = e.clientX - canvas.offsetLeft;
+    my = e.clientY - canvas.offsetTop;
+  });
+
+  var Particle = function (x, y) {
+    this.hx = ~~(x - offset * Math.random());
+    this.hy = ~~(y - offset * Math.random());
+    this.cx = ~~(cw * Math.random());
+    this.cy = ~~(ch * Math.random());
+    this.vx = Math.random() * 10 - 5;
+    this.vy = Math.random() * 10 - 5;
+  };
+
+  Particle.prototype.update = function () {
+    var dx = this.cx - mx;
+    var dy = this.cy - my;
+    var ds = dx * dx + dy * dy;
+    var aradius = Math.min(radius / ds, radius);
+    var theta = Math.atan2(dy, dx);
+
+    var hdx = this.hx - this.cx;
+    var hdy = this.hy - this.cy;
+    var hds = Math.sqrt(hdx * hdx + hdy * hdy);
+    var hf = hds * 0.01;
+    var htheta = Math.atan2(hdy, hdx);
+
+    this.vx += aradius * Math.cos(theta) + hf * Math.cos(htheta);
+    this.vy += aradius * Math.sin(theta) + hf * Math.sin(htheta);
+
+    this.vx *= drag;
+    this.vy *= drag;
+
+    this.cx += this.vx;
+    this.cy += this.vy;
+  };
+
+  var draw = function () {
+    b = (a = ctx.createImageData(cw, ch)).data;
+
+    for (var i = 0; i < particles.length; i++) {
+      particles[i].update();
     }
-  }
-  context.fillStyle = this.color;
-  context.beginPath();
-  context.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
-  context.fill();
-  context.closePath();
-}
 
-function onmouseCoordMove(e) {
-  mouseCoord.x = e.clientX;
-  mouseCoord.y = e.clientY;
-}
+    for (var i = 0; i < particles.length; i++) {
+      p = particles[i];
+      (b[(n = (~~p.cx + ~~p.cy * cw) * 4)] = b[n + 1] = b[n + 2] = 220),
+        (b[n + 3] = 255);
+    }
 
-function onTouchMove(e) {
-  if(e.touches.length > 0 ) {
-    mouseCoord.x = e.touches[0].clientX;
-    mouseCoord.y = e.touches[0].clientY;
-  }
-}
+    ctx.putImageData(a, 0, 0);
 
-function onTouchEnd() {
-  mouseCoord.x = -9999;
-  mouseCoord.y = -9999;
-}
+    setTimeout(function () {
+      requestAnimationFrame(draw);
+    }, timeout);
+  };
 
-function initScene() {
-  ch = canvas.height = canvas.getBoundingClientRect().height;
-  cw = canvas.width = canvas.getBoundingClientRect().width;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.font = 'bold ' + (cw / 5) + 'px sans-serif';
-  context.fillStyle = sceneBackground;
-  context.textAlign = 'center';
-  context.fillText(text404, cw / 2, ch / 2);
-  let imageData = context.getImageData(0, 0, cw, ch).data;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.globalCompositeOperation = 'screen';
-  particles = [];
-  for(let y = 0; y < ch; y += Math.round(cw / dpi)) {
-    for(let x = 0; x < cw; x += Math.round(cw / dpi)) {
-      if(imageData[((x + y * cw) * 4) + 3] > 128){
-        particles.push(new Particle(x, y));
+  var init = function () {
+    pixels = ctx.getImageData(0, 0, cw, ch).data;
+
+    for (var i = 0; i < ch; i = i + density) {
+      for (var j = 0; j < cw; j = j + density) {
+        var index = (j + i * cw) * 4;
+
+        if (pixels[index + 3] > 128) {
+          if (index >= particles.length) {
+            particles.push(new Particle(j, i));
+          } else {
+            particles[index].hx = j;
+            particles[index].hy = i;
+          }
+        }
       }
     }
-  }
-  particlesCount = particles.length;
-}
+  };
 
-function renderScene() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  let isDisableMouse = false;
-  if ((previousMouseCoord.x === mouseCoord.x) && (previousMouseCoord.x === mouseCoord.x)) {
-    isDisableMouse = true;
-  } else {
-    previousMouseCoord.x = mouseCoord.x;
-    previousMouseCoord.x = mouseCoord.x;
-    isDisableMouse = false;
-  }
-  for (let i = 0; i < particlesCount; i++) {
-    particles[i].render(isDisableMouse);
-  }
-  requestAnimationFrame(renderScene);
+  init();
+  console.log(particles.length);
+  draw();
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-  initScene();
-  renderScene();
-  window.addEventListener('mousemove', onmouseCoordMove);
-  window.addEventListener('touchmove', onTouchMove);
-  window.addEventListener('touchend', onTouchEnd);
-  window.addEventListener('resize', function() {
-    if (!sceneResize) {
-      requestAnimationFrame(function() {
-        initScene();
-        sceneResize = false;
-      });
-      sceneResize = true;
-    }
-  });
-});
