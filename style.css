@@ -58,14 +58,24 @@ body {
 }
 
 .about {
-  overflow: hidden;
-  
+  overflow: visible;
+  width: 100vw;
+  height: 100vh;
   position: relative;
 }
 
 .jumboName{
   z-index: 10;
-  top: auto;
+  top: 50%;
   font-size: 700%;
   position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  bottom: 0px;
+}
+
+.aboutText {
+  overflow: visible;
+  width: 100vw;
+  height: 100vh;
 }
