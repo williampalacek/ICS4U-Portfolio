@@ -65,4 +65,6 @@ body {
 .paragraph{
   color: white;
   font-family: "Jockey One";
+  width: 45%;
+  position: absolute;
 }

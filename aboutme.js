@@ -4,9 +4,8 @@ window.onload = function () {
 
   var cw = (canvas.width = window.innerWidth);
   var ch = (canvas.height = window.innerHeight);
-
-  var keyword =
-    "About Me";
+  var size = canvas.width;
+  var keyword = "About Me";
   var radius = 9400;
   var drag = 0.92;
   var ease = 0.2;
@@ -19,7 +18,7 @@ window.onload = function () {
   var mx = 0,
     my = 0;
 
-  ctx.font = "300px 'Jockey One'";
+  ctx.font = "200px 'Jockey One'";
 
   ctx.fillText(
     keyword,
