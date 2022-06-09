@@ -16,8 +16,8 @@ header {
   z-index: 10;
   box-shadow: 0px 0px 20px 0px rgba(0.3, 0.3, 0.3, 0.3);
   border-radius: 10px;
- 
-  background-color: rgba(255, 255, 255, 0.9);
+  
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .logo {
@@ -61,10 +61,10 @@ body {
 }
 
 .coverPhoto {
-  height: 100vh;
+  height: 99.3vh;
   width: 100vw;
   position: relative;
-  top:0px;
+  top:4px;
   z-index:1;
   filter: none;
 }
@@ -74,6 +74,7 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+  background-color: #609dba;
 }
 
 .jumboName{
@@ -92,5 +93,5 @@ overflow-x: hidden;
   width: 100vw;
   height: 100vh;
   background-color: red;
-  top:-5px;
+  top:0px;
 }
