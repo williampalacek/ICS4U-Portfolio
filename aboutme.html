@@ -3,15 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Navbar</title>
+    <title>Portfolio</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap"
       rel="stylesheet"
     />
-    <script src="script.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.min.js"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/addons/p5.sound.min.js"
+    ></script>
+    <script type="text/javascript" src="script.js"></script>
   </head>
   <body class="about">
     <header>
@@ -38,9 +46,23 @@
       <h1 class="jumboName">William Palacek</h1>
     </div>
     <div class="aboutText">
-      <iframe
-        src="https://www.youtube.com/embed/qdztudt6z9Q"
-      ></iframe>
+      <span id="text1"></span>
+      <span id="text2"></span>
     </div>
+    <svg id="filters">
+      <defs>
+        <filter id="threshold">
+          <!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
+          <feColorMatrix
+            in="SourceGraphic"
+            type="matrix"
+            values="1 0 0 0 0
+									0 1 0 0 0
+									0 0 1 0 0
+									0 0 0 255 -140"
+          />
+        </filter>
+      </defs>
+    </svg>
   </body>
 </html>
