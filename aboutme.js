@@ -7,7 +7,7 @@ window.onload = function () {
   var ch = (canvas.height = window.innerHeight);
   var size = canvas.width;
   var keyword = "About Me";
-  var radius = 9400;
+  var radius = 10400;
   var drag = 0.92;
   var ease = 0.2;
   var density = 2;
