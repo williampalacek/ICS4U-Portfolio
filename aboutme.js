@@ -1,3 +1,4 @@
+//By William Palacek
 window.onload = function () {
   var canvas = document.getElementById("textparticle"),
     ctx = canvas.getContext("2d");

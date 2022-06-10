@@ -1,4 +1,4 @@
-
+//By William Palacel
 const colorMap = [
   '#1abc9c',
   '#3498db',
