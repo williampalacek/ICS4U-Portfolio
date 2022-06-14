@@ -64,12 +64,12 @@ body {
 }
 
 .home {
-  height: 200vh;
+  height: 500vh;
   text-align: center;
 }
 
 .content {
-  width: 50vw;
+  width: 60vw;
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
@@ -78,4 +78,8 @@ body {
 
 .contentBlock{
   padding-top:90px;
+}
+
+i{
+  width:100%;
 }
