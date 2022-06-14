@@ -74,4 +74,5 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   top:90px;
+  text-align: centre;
 }
