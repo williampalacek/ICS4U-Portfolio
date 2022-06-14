@@ -65,7 +65,7 @@ body {
 
 .home {
   height: 200vh;
-  text-align: centre;
+  text-align: center;
 }
 
 .content {
@@ -73,6 +73,9 @@ body {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
-  top:90px;
-  text-align: centre;
+  text-align: center;
+}
+
+.contentBlock{
+  padding-top:90px;
 }
