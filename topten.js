@@ -1,73 +1,104 @@
-//By William Palacel
-const colorMap = [
-  '#1abc9c',
-  '#3498db',
-  '#9b59b6'
-];
+//boys move around randomly by noise
+var Boy = function()
+{
+    //setting random starting position
+    this.position = new PVector(random(width), random(height));
+    
+    //generating random starting point for noise
+    this.tx = random(width);
+    this.ty = random(height);
+};
 
-class Mover {
-  color = color(random(colorMap));
-  maxSpeed = 6;
-  rotation: number;
+//function to make boys move
+Boy.prototype.walk = function()
+{
+    //moving boys
+    this.position.x = map(noise(this.tx), 0, 1, -400, width * 2);
+    this.position.y = map(noise(this.ty), 0, 1, -400, height * 2);
+    
+    //increasing noise interval
+    this.tx += 0.001;
+    this.ty += 0.001;
+    
+    //returning boy position
+    return this.position;
+};
 
-  constructor(
-    public position: p5.Vector = createVector(0, 0),
-    public velocity: p5.Vector = createVector(0, 0),
-    public acceleration: p5.Vector =  createVector(0, 0)
-  ) {}
+//function to display boys
+Boy.prototype.display = function()
+{
+    //setting colours
+    stroke(0);
+    strokeWeight(2);
+    fill(184, 87, 87);
+    
+    //drawing boys
+    image(getImage("creatures/BabyWinston"), this.position.x, this.position.y, 20, 30);
+};
 
-  update() {
-    const mouse = createVector(mouseX, mouseY);
+//array to store boys
+var boys = [];
+for (var i = 0; i < 5; i++)
+{
+    boys[i] = new Boy(); 
+}
 
-    this.acceleration = p5.Vector.sub(mouse, this.position);
-    this.acceleration.setMag(0.2);
+//bigBoys chase the boys
+var bigBoy = function()
+{
+    //setting random starting position
+    this.position = new PVector(random(width), random(height));
+    
+    //setting velocity and accelaration to 0
+    this.velocity = new PVector(0, 0);
+    this.acceleration = new PVector(0, 0);
+};
 
+//function to move big boys
+bigBoy.prototype.update = function(boyPos)
+{
+    //making big boys accelerate towards boys
+    var dir = PVector.sub(boyPos, this.position);
+    dir.normalize();
+    dir.mult(0.1);
+    this.acceleration = dir;
     this.velocity.add(this.acceleration);
-    this.velocity.limit(this.maxSpeed);
+    this.velocity.limit(2);
     this.position.add(this.velocity);
+};
 
-    const vd = p5.Vector.sub(mouse, this.position);
+//function to display big boys
+bigBoy.prototype.display = function()
+{
+    //setting colour
+    stroke(0);
+    strokeWeight(2);
+    fill(64, 117, 173);
+    
+    //drawing big boys
+    image(getImage("avatars/spunky-sam-red"),this.position.x, this.position.y, 45, 45);
+};
 
-    this.rotation = atan2(vd.y, vd.x);
-  }
-
-  draw() {
-    push();
-      translate(this.position.x, this.position.y);
-      rotate(this.rotation);
-      noStroke();
-      rect(-20, -5, 20, 5);
-      fill(this.color);
-      rect(0, -5, 5, 5);
-    pop();
-  }
+//array to store big boys
+var bigBoys = [];
+for (var i = 0; i < 5; i++) {
+    bigBoys[i] = new bigBoy(); 
 }
 
-let movers: Mover[] = [];
-
-function setup() {
-  const { innerWidth, innerHeight } = window;
-
-  createCanvas(innerWidth, innerHeight);
-  
-  for (let i = 0; i < 20; i += 1) {
-    movers.push(new Mover(
-      new p5.Vector(random(0, width), random(0, height))
-    ));
-  }
-}
-
-function draw() {
-  background(33);
-
-  movers.forEach((mover) => {
-    mover.update();
-    mover.draw();
-  });
-}
-
-function windowResized() {
-  const { innerWidth, innerHeight } = window;
-
-  resizeCanvas(innerWidth, innerHeight);
-}
+//animating boys and big boys
+draw = function() {
+    background(255, 255, 255);
+    
+    //loop to run through all boys
+    for (var j = 0; j < boys.length; j++)
+    {
+        boys[j].walk();
+        boys[j].display(); 
+    }
+    
+    //loop to run through all big boys
+    for (var i = 0; i < bigBoys.length; i++) {
+        bigBoys[i].update(boys[i].walk());
+        bigBoys[i].display(); 
+    }
+};
