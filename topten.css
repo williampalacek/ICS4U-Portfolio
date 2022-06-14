@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 /*Hide Scroll Bard*/
 ::-webkit-scrollbar {
@@ -62,6 +63,15 @@ body {
   background-color: #f2f3f7;
 }
 
-.home{
-  height:200vh;
+.home {
+  height: 200vh;
+  text-align: centre;
+}
+
+.content {
+  width: 50vw;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top:90px;
 }
