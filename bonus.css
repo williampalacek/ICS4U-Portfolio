@@ -72,7 +72,7 @@ body {
 #iframe1 {
   position: absolute;
   z-index: 9;
-  top: 10vh;
+  top: 15vh;
   width: 45vw;
   height: 55vh;
   left: 50%;
@@ -83,7 +83,7 @@ body {
 #iframe2 {
   position: absolute;
   z-index: 9;
-  top: 70vh;
+  top: 75vh;
   width: 45vw;
   height: 55vh;
   left: 50%;
