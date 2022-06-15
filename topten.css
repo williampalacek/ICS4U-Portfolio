@@ -96,5 +96,10 @@ body {
 
 .contentBlock{
   padding-top:90px;
+
 }
 
+p{
+    box-shadow: 20px 0px 0px 0px rgba(0.3, 0.3, 0.3, 0.3);
+    border-radius: 10px;
+}
